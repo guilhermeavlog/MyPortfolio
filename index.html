@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Loges</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@v0.158.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@v0.158.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module" src="avatar.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="content">
+    <section id="home">
+      <div id='avatar-container'>
+        <div id='avatar-loading'></div>
+      </div>
+      <h1 class="hero-title">Hi there 👋</h1>
+      <h1>I'm <span class='gradient-text'>Guilherme Loges</span></h1>
+      <p>I'm a computer science student with a passion for LLMs, Prompt Engineering, and AI.</p>
+    </section>
+    <section id="about">
+      <h1><span class='gradient-text'>About Me</span></h1>
+      <p>I'm a <strong>computer science</strong> student at the University of Colorado Boulder interested in <strong></strong>innovation, full-stack development, large language models (LLMs), and artificial intelligence.</p>
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>AI & Machine Learning:</strong> LangChain, Chainlit, TensorFlow, Prompt Engineering</li>
+        <li><strong>Front-End & Back-End Development:</strong> React, React Native, Node.js, HTML, CSS</li>
+        <li><strong>Mobile Development:</strong> Flutter and Dart</li>
+        <li><strong>Game Development:</strong> Unity</li>
+        <li><strong>Programming Languages:</strong> JavaScript, Python, C++, C#</li>
+        <li><strong>Languages:</strong> English, Portuguese, Spanish</li>
+      </ul>
+    </section>
+    
+    <section id="projects">
+      <h1><span class='gradient-text'>Projects</span></h1>
+    
+      <div class="project">
+        <h2>Munai - Medical Assistant Chatbot</h2>
+        <p>During my internship at Munai, a health tech startup, I built a <strong>Chatbot with voice-to-text integration</strong> to serve as a medical assistant. This tool was designed to help doctors at <em>Hospital de Olhos do Paraná</em> write medical reports more efficiently, streamlining their workflow and improving report accuracy and speed.</p>
+      </div>
+
+      <div id="cube-container"></div>
+      
+      <!-- Additional projects can be added here -->
+    </section>
+    
+    <section id="contact">
+      <h1><span class='gradient-text'>Contact</span></h1>
+      <p>Feel free to reach out if you have any questions, opportunities, or just want to connect!</p>
+      <p> <a href="mailto:guilhermeloges@gmail.com">guilhermeloges@gmail.com</a></p>
+    </section>
+    
+  </div>
+
+  <!-- JavaScript for Navigation -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll("nav ul li a");
+      const sections = document.querySelectorAll("section");
+
+      // Hide all sections except "home" by default
+      sections.forEach(section => section.style.display = "none");
+      document.getElementById("home").style.display = "block";
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault(); // Prevent the default link jump behavior
+
+          // Hide all sections
+          sections.forEach(section => section.style.display = "none");
+
+          // Show the target section
+          const targetSection = document.querySelector(link.getAttribute("href"));
+          targetSection.style.display = "block";
+        });
+      });
+    });
+  </script>
+  <script type="module">
+    import { createCube } from './cube.js';
+
+    // Initialize the cube after the DOM content has loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      createCube();
+    });
+  </script>
+</body>
+
+</html>
